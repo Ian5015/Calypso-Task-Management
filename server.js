@@ -43,7 +43,11 @@ app.use(passport.session());                        // it will be managing sessi
 //app.use(app.router);
     
 
-
+/** Angoose bootstraping */
+require("angoose").init(app, {
+   'module-dirs':'app/models',
+   'mongo-opts': 'localhost:27017/test',
+});
 
 
 // routes ==================================================

@@ -1,16 +1,29 @@
 <!-- views/supervisor.ejs -->
 <!doctype html>
-<html>
+<html ng-app="modalTest">
 <head>
 	<title>Node Authentication</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<style>
+    
+	    <!-- JS -->
+        <script src="//code.angularjs.org/1.2.16/angular.min.js"></script>
+		<script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js"></script>
+        <script src="/angoose/angoose-client.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bower-angular-translate/2.0.1/angular-translate.min.js"></script>
+		<script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+        <script src="js/dialogs-default-translations.js"></script>
+		<script src="js/dialogs.js"></script>
+		<script src="js/dialogTest.js"></script>
+        
+        
+    
+    <style>
 		body 		{ padding-top:80px; word-wrap:break-word; }
 	</style>
 </head>
 <body>
-<div class="container">
+<div class="container" ng-controller="dialogServiceTest">
 
 	<div class="page-header text-center">
 		<h1><span class="fa fa-anchor"></span> Supervisor Page</h1>
@@ -20,7 +33,7 @@
 	<div class="row">
 
 		<!-- LOCAL INFORMATION -->
-		<div class="col-sm-6">
+		<div class="col-md-6">
 			<div class="well">
 				<h3><span class="fa fa-user"></span> Local</h3>
 
@@ -33,9 +46,23 @@
 
 			</div>
 		</div>
-
+        
+        
+        <h1>{{ 5 + 1 }}</h1>
+        <h1 ng-repeat="worker in workers">{{ worker.email }}</h1>
+        <h1 ng-repeat="worker in workers">{{ worker.local.email }}</h1>
+        
+        <!-- Button to trigger "create job" modal -->
+        <div class="row">
+			<div class="col-md-12">
+        		<button ng- class="btn btn-warning" ng-click="launch('custom')">Create Job</button>
+                
+			</div>
+		</div>
+        
+     
+        
 	</div>
-
 </div>
 </body>
 </html>

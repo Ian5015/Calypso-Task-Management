@@ -16,3 +16,30 @@ In bash shell: node server.js (note: Node.js must be installed).
 In your browser, go to http://localhost:8080/
 
 Now you can sign up or log in.
+
+====================
+#TODO:
+
+Database:
+	Fill database with junk workers to be pulled and assigned work by the supervisor
+	Table for users
+		Users must have:
+		id
+		name
+		email
+		phone number
+		number of jobs (min = 0, max = 10)
+		current
+	
+	Table for jobs
+		id
+		category
+		location
+		priority
+
+Supervisor Functionality:
+	Left sidebar for list of workers, giving some indication of their work load. Perhaps use color (blue=no jobs, green=low jobs, yellow=medium jobs, orange=high number of jobs, red=full jobs)
+	Create new job button, modal popup with form to fill in information that will be sent to database
+	
+
+	
