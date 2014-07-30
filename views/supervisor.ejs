@@ -2,19 +2,21 @@
 <!doctype html>
 <html ng-app="modalTest">
 <head>
-	<title>Node Authentication</title>
+	<title>Calypso Task Management</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
     
-	    <!-- JS -->
-        <script src="//code.angularjs.org/1.2.16/angular.min.js"></script>
-		<script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js"></script>
-        <script src="/angoose/angoose-client.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/bower-angular-translate/2.0.1/angular-translate.min.js"></script>
-		<script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
-        <script src="js/dialogs-default-translations.js"></script>
-		<script src="js/dialogs.js"></script>
-		<script src="js/dialogTest.js"></script>
+    <!-- JS -->
+    <script src="//code.angularjs.org/1.2.16/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.2.16/angular-sanitize.min.js"></script>
+    <script src="/angoose/angoose-client.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bower-angular-translate/2.0.1/angular-translate.min.js"></script>
+    <script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
+    <script src="js/dialogs-default-translations.js"></script>
+    <script src="js/dialogs.js"></script>
+    <script src="js/dialogTest.js"></script>
+
         
         
     
@@ -31,36 +33,27 @@
 	</div>
 
 	<div class="row">
-
-		<!-- LOCAL INFORMATION -->
-		<div class="col-md-6">
-			<div class="well">
-				<h3><span class="fa fa-user"></span> Local</h3>
-
-					<p>
-						<strong>id</strong>: <%= user._id %><br>
-						<strong>email</strong>: <%= user.local.email %><br>
-						<strong>password</strong>: <%= user.local.password %>
-						<strong>isSupervisor</strong>: <%= user.local.isSupervisor %>
-					</p>
-
-			</div>
-		</div>
-        
-        
-        <h1>{{ 5 + 1 }}</h1>
-        <h1 ng-repeat="worker in workers">{{ worker.email }}</h1>
-        <h1 ng-repeat="worker in workers">{{ worker.local.email }}</h1>
         
         <!-- Button to trigger "create job" modal -->
-        <div class="row">
+        <div class="row text-center">
 			<div class="col-md-12">
-        		<button ng- class="btn btn-warning" ng-click="launch('custom')">Create Job</button>
+        		<button class="center btn btn-primary btn-lg" ng-click="launch('custom')">Create Job</button>
                 
 			</div>
 		</div>
         
-     
+        <div class="col-md-pull-6">
+            <div class="row text-center " ng-repeat="job in jobs">
+
+                <div class="col-md-3 btn btn-default jobs btn-lg center">
+                    Location: {{job._id}} <br>
+                    Priority: {{job.priority}} <br>
+                    Worker  : {{job.worker}} <br>
+                </div>
+
+            </div>
+        </div>        
+        
         
 	</div>
 </div>

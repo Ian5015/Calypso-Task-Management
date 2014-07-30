@@ -1,12 +1,9 @@
-<div class="modal-header">
-    <h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> User\'s Name</h4>
+<div ng-app="modalTest"  class="modal-header">
+    <h4 class="modal-title"><span class="glyphicon glyphicon-star"></span>Create New Job</h4>
 </div>
 <div class="modal-body">
-    <form action="/createJob" method="post" class="form-horizontal">
+    <form ng-controller="dialogServiceTest" action="/create" method="POST" class="form-horizontal">
         <fieldset>
-
-            <!-- Form Name -->
-            <legend>Create New Job</legend>
 
             <!-- Text input-->
             <div class="control-group">
@@ -21,7 +18,7 @@
             <div class="control-group">
                 <label class="control-label" for="selectPriority">Select Priority</label>
                 <div class="controls">
-                    <select id="selectPriority" name="selectPriority" class="input-small">
+                    <select id="selectPriority" name="priority" class="input-small">
                         <option>Low</option>
                         <option>High</option>
                     </select>
@@ -32,19 +29,18 @@
             <div class="control-group">
                 <label class="control-label" for="selectWorker">Select Worker</label>
                 <div class="controls">
-                    <select id="selectWorker" name="selectWorker" class="input-medium">
-                        <option ng-repeat="user in User">{{user.local.email}}</option>
+                    <select id="selectWorker" name="worker" class="input-medium">
+                        <option ng-repeat="worker in workers">{{ worker.local.email }}</option>
                     </select>
                 </div>
             </div>
 
         </fieldset>
+        <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
+    <button type="submit" class="btn btn-primary"  ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>
     </form>
 </div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-default" ng-click="cancel()">Cancel</button>
-    <button type="button" class="btn btn-primary" ng-click="save()" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button>
-</div>
+
 
 
 

@@ -5,12 +5,14 @@
  * If you are already using angular-translate then just add the translations found in "dialogs.default-translations"
  * module to your translations and then there's no need to include the default module.
  */
+
 angular.module('modalTest',['ui.bootstrap','dialogs.main','dialogs.default-translations','pascalprecht.translate', 'angoose.client'])
 	.controller('dialogServiceTest',function($scope,$rootScope,$timeout,$translate,dialogs, User, Job){
 
 		//-- Variables --//
 
         var workers = $scope.workers = User.$query();
+        var jobs    = $scope.jobs    = Job.$query();
         
 		$scope.lang = 'en-US';
 		$scope.language = 'English';
@@ -160,6 +162,6 @@ angular.module('modalTest',['ui.bootstrap','dialogs.main','dialogs.default-trans
 	}])
 
 	.run(['$templateCache',function($templateCache){
-  		$templateCache.put('/dialogs/custom.html','<div class=modal-header><h4 class=modal-title><span class="glyphicon glyphicon-star"></span> User\'s Name</h4></div><div class=modal-body><form action=/createJob method=post class=form-horizontal><fieldset><legend>Create New Job</legend><div class=control-group><label class=control-label for=location>Location</label><div class=controls><input id=location name=location placeholder="Enter the location of the work to be completed..." class=input-xxlarge></div></div><div class=control-group><label class=control-label for=selectPriority>Select Priority</label><div class=controls><select id=selectPriority name=selectPriority class=input-small><option>Low<option>High</select></div></div><div class=control-group><label class=control-label for=selectWorker>Select Worker</label><div class=controls><select id=selectWorker name=selectWorker class=input-medium><option ng-repeat="worker in workers">{{worker.local.email}}</select></div></div></fieldset></form></div><div class=modal-footer><button type=button class="btn btn-default" ng-click=cancel()>Cancel</button> <button type=button class="btn btn-primary" ng-click=save() ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button></div>');
+  		$templateCache.put('/dialogs/custom.html','<div ng-app=modalTest class=modal-header><h4 class=modal-title><span class="glyphicon glyphicon-star"></span>Create New Job</h4></div><div class=modal-body><form ng-controller=dialogServiceTest action=/create method=POST class=form-horizontal><fieldset><div class=control-group><label class=control-label for=location>Location</label><div class=controls><input id=location name=location placeholder="Enter the location of the work to be completed..." class=input-xxlarge></div></div><div class=control-group><label class=control-label for=selectPriority>Select Priority</label><div class=controls><select id=selectPriority name=priority class=input-small><option>Low<option>High</select></div></div><div class=control-group><label class=control-label for=selectWorker>Select Worker</label><div class=controls><select id=selectWorker name=worker class=input-medium><option ng-repeat="worker in workers">{{ worker.local.email }}</select></div></div></fieldset><button type=button class="btn btn-default" ng-click=cancel()>Cancel</button> <button type=submit ng-click="done()" class="btn btn-primary" ng-disabled="(nameDialog.$dirty && nameDialog.$invalid) || nameDialog.$pristine">Save</button></form></div>');
   		$templateCache.put('/dialogs/custom2.html','<div class="modal-header"><h4 class="modal-title"><span class="glyphicon glyphicon-star"></span> Custom Dialog 2</h4></div><div class="modal-body"><label class="control-label" for="customValue">Custom Value:</label><input type="text" class="form-control" id="customValue" ng-model="data.val" ng-keyup="hitEnter($event)"><span class="help-block">Using "dialogsProvider.useCopy(false)" in your applications config function will allow data passed to a custom dialog to retain its two-way binding with the scope of the calling controller.</span></div><div class="modal-footer"><button type="button" class="btn btn-default" ng-click="done()">Done</button></div>')
 	}]); 

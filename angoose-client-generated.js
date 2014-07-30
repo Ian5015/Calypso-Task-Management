@@ -832,10 +832,10 @@
 			"create": "$PROXIED$"
 		},
 		"paths": {
-			"location": {
+			"_id": {
 				"enumValues": [],
 				"regExp": null,
-				"path": "location",
+				"path": "_id",
 				"instance": "String",
 				"setters": [],
 				"getters": [],
@@ -845,23 +845,21 @@
 				"_index": null
 			},
 			"priority": {
+				"enumValues": [],
+				"regExp": null,
 				"path": "priority",
-				"instance": "Number",
+				"instance": "String",
 				"setters": [],
 				"getters": [],
 				"options": {
-					"type": "Number",
-					"min": 0,
-					"max": 5
+					"type": "String"
 				},
-				"_index": null,
-				"minValidator": "not-supported",
-				"maxValidator": "not-supported"
+				"_index": null
 			},
-			"workerAssigned": {
+			"worker": {
 				"enumValues": [],
 				"regExp": null,
-				"path": "workerAssigned",
+				"path": "worker",
 				"instance": "String",
 				"setters": [],
 				"getters": [],
@@ -878,20 +876,6 @@
 					"type": "Boolean"
 				},
 				"_index": null
-			},
-			"_id": {
-				"path": "_id",
-				"instance": "ObjectID",
-				"setters": [
-					"not-supported"
-				],
-				"getters": [],
-				"options": {
-					"type": "ObjectId",
-					"auto": true
-				},
-				"_index": null,
-				"defaultValue": "not-supported"
 			},
 			"__v": {
 				"path": "__v",

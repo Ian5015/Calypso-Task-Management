@@ -1,6 +1,7 @@
 // app/routes.js
-var mongoose = require( 'mongoose' );
-var Users = mongoose.model( 'User');
+var mongoose = require('mongoose');
+var Users = mongoose.model('User');
+var Jobs = mongoose.model('Job');
 
 
 module.exports = function (app, passport) {
@@ -60,24 +61,21 @@ module.exports = function (app, passport) {
         }
     });
 
-    
+
     // =====================================
     // SUPERVISOR ==========================
     // =====================================
     app.get('/supervisor', isLoggedIn, function (req, res) {
 
-        console.log(Users.find());
-        console.log("test");
-        
-        Users.find( function ( err, users, count ) {
-    
+        Users.find(function (err, users, count) {
+
             res.render('supervisor.ejs', {
                 user: req.user, // get the user out of session and pass to template
                 users: users
             });
-            
-        });    
-        
+
+        });
+
     });
 
     // =====================================
@@ -89,9 +87,25 @@ module.exports = function (app, passport) {
     });
 
     // =====================================
-    // REST Services========================
+    // CREATE JOB===========================
     // =====================================
+    app.post('/create', function(req, res) {
+                
+        console.log('creating new user');
+        new Jobs({
+            _id  :  req.body.location,
+            priority  :  req.body.priority,
+            worker    :  req.body.worker
+        }).save(function(err, doc) {
+            if(err) console.log(err);
+            else    console.log('Successfully inserted');
+        });
+        
+        res.redirect('/profile');
+    });
 
+    // process the job create form
+    //app.post('/create', routes.create);
 
     // process the signup form
     app.post('/signup', passport.authenticate('local-signup', {

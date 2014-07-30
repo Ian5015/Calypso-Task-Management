@@ -1,0 +1,15 @@
+div.jobs {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    color: #000;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}

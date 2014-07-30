@@ -5,10 +5,10 @@ var mongoose = require('mongoose');
 // define the schema for our user model
 var jobSchema = mongoose.Schema({
 
-    location       : String,
-    priority       : { type: Number, min: 0, max: 5 },
-    workerAssigned : String,
-    isJobCompleted   : Boolean,
+    _id            : String, //location will be the primary key
+    priority       : String,
+    worker         : String,
+    isJobCompleted : Boolean,
     
 });
 
